@@ -28,8 +28,6 @@ gulp.task("clean", function () {
 gulp.task("copy", function () {
   return gulp.src([
       "source/fonts/**/*.{woff,woff2}",
-      // "source/img/**",
-      // "source/js/**",
       "source/*.ico"
     ], {
       base: "source"
@@ -52,34 +50,7 @@ gulp.task("css", function () {
     .pipe(server.stream());
 });
 
-// Создаем SVG спрайт
-gulp.task("sprite", function () {
-  return gulp.src("build/img/sprite-*.svg") // выбрать определенные svg
-    .pipe(svgstore({
-      inlineSvg: true
-    }))
-    .pipe(rename("sprite.svg"))
-    .pipe(gulp.dest("build/img"));
-});
-
-// Созданание HTML
-gulp.task("html", function () {
-  return gulp.src("source/*.html")
-    .pipe(posthtml([
-      include()
-    ])) // вставка спрайта
-    .pipe(htmlmin({ collapseWhitespace: true })) // минифицирует html
-    .pipe(gulp.dest("build"));
-});
-
-// Минифицирует JS
-gulp.task('js', function () {
-  return gulp.src("source/js/*.js")
-    .pipe(uglify())
-    .pipe(gulp.dest("build/js"))
-});
-
-// Оптимизация изображений - npx gulp images
+// Оптимизация изображений
 gulp.task("images", function () {
   return gulp.src("source/img/**/*.{png,jpg,svg}")
     .pipe(imagemin([
@@ -90,11 +61,38 @@ gulp.task("images", function () {
     .pipe(gulp.dest("build/img"));
 });
 
-// Создаем WebP изображения - команда npx gulp webp
+// Создаем WebP изображения
 gulp.task("webp", function () {
   return gulp.src("build/img/**/*.{png,jpg}")
     .pipe(webp({quality: 90}))
     .pipe(gulp.dest("build/img"));
+});
+
+// Создаем SVG спрайт
+gulp.task("sprite", function () {
+  return gulp.src("build/img/sprite-*.svg") // выбрать определенные svg
+    .pipe(svgstore({
+      inlineSvg: true
+    }))
+    .pipe(rename("sprite.svg"))
+    .pipe(gulp.dest("build/img"));
+});
+
+// Минифицирует JS
+gulp.task('js', function () {
+  return gulp.src("source/js/*.js")
+    .pipe(uglify())
+    .pipe(gulp.dest("build/js"))
+});
+
+// Созданание HTML
+gulp.task("html", function () {
+  return gulp.src("source/*.html")
+    .pipe(posthtml([
+      include()
+    ])) // вставка спрайта
+    .pipe(htmlmin({ collapseWhitespace: true })) // минифицирует html
+    .pipe(gulp.dest("build"));
 });
 
 // Запускаем билд
