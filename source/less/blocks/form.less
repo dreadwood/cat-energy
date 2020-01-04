@@ -211,6 +211,12 @@
   text-transform: uppercase;
 
   border: 1px solid @input-border-color;
+  appearance: textfield;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+  }
 
   &::placeholder {
     color: @input-placeholder-color;

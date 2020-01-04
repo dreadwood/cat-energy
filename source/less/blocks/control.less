@@ -5,7 +5,7 @@
 }
 
 .control__button {
-  width: 70px;
+  // width: 70px;
   padding: 0;
 
   font-family: @font-deafult;
@@ -20,6 +20,7 @@
   cursor: pointer;
 
   &--before {
+    padding-left: 2px; // отменить в планшетной версии
     text-align: right;
   }
 
@@ -103,6 +104,7 @@
 @media (min-width: @tablet-width) {
   .control__range-mobile {
     display: none;
+    padding: 0;
   }
 
   .control__range-default {
@@ -118,6 +120,10 @@
 
     border-bottom: 1px dotted @grey--dark;
 
+    &--before {
+      padding-right: 3px; // отменить в планшетной версии
+    }
+
     &:hover,
     &:focus {
       border-bottom: 1px solid @grey--dark;
@@ -132,5 +138,9 @@
 @media (min-width: @desktop-width) {
   .control {
     justify-content: flex-end;
+  }
+
+  .control__range-default {
+    margin-right: 21px;
   }
 }
