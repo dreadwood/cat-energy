@@ -41,9 +41,16 @@
   .main-nav {
     display: flex;
     align-items: center;
+    margin-top: -4px;
   }
 
   .main-nav__toggle {
     display: none;
+  }
+}
+
+@media (min-width: @desktop-width) {
+  .main-nav {
+    margin-top: 0;
   }
 }

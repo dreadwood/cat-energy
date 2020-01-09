@@ -152,14 +152,24 @@
     padding: 73px 0 1px 0;
   }
 
+  .description-product__list {
+    justify-content: start;
+  }
+
   .description-product__item {
     width: 245px;
+    margin-right: 80px;
     margin-bottom: 24px;
     padding: 112px 0 10px 0;
 
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
 
     &::after {
       right: 0;
     }
   }
+
+
 }

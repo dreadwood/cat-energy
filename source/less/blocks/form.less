@@ -386,6 +386,10 @@
     &--extra {
       width: 287px;
       margin-bottom: 51px;
+
+      &:last-child {
+        margin-bottom: 51px;
+      }
     }
   }
 
@@ -517,14 +521,18 @@
 
   .form__list {
     &--extra {
-      display: flex;
-      justify-content: space-between;
+      justify-content: start;
     }
   }
 
   .form__list-item {
     &--extra {
       width: 245px;
+      margin-right: 80px;
+
+      &:nth-child(4n) {
+        margin-right: 0;
+      }
     }
   }
 

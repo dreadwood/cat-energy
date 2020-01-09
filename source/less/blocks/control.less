@@ -1,6 +1,7 @@
 .control {
   display: flex;
   justify-content: center;
+  align-items: center;
   padding-left: 2px;
 }
 
@@ -19,7 +20,7 @@
   cursor: pointer;
 
   &--before {
-    padding-left: 2px; // отменить в планшетной версии
+    padding-left: 2px;
     text-align: right;
   }
 
@@ -67,9 +68,9 @@
 
   &::-webkit-slider-thumb {
     appearance: none;
-    width: 30px;
-    height: 30px;
-    margin-top: -12px;
+    width: 32px;
+    height: 32px;
+    margin-top: -13px;
 
     background-color: @green;
     border: 11px solid @white;
@@ -101,6 +102,10 @@
 }
 
 @media (min-width: @tablet-width) {
+  .control {
+    padding-left: 0;
+  }
+
   .control__range-mobile {
     display: none;
     padding: 0;
@@ -111,17 +116,12 @@
   }
 
   .control__button {
-    width: auto;
-    margin-top: 2px;
+    margin: 5px 3px 0px 3px;
     padding: 0 0 6px 0;
 
     font-size: 20px;
 
     border-bottom: 1px dotted fade(@black--light, 23);
-
-    &--before {
-      padding-right: 3px; // отменить в планшетной версии
-    }
 
     &:hover,
     &:focus {
@@ -140,6 +140,11 @@
   }
 
   .control__range-default {
-    margin-right: 21px;
+    margin-left: 23px;
+  }
+
+  .control__button {
+    margin: 5px 1px 0px 1px;
+    padding: 0 0 6px 0;
   }
 }
