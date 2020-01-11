@@ -211,7 +211,8 @@
   text-transform: uppercase;
 
   border: 1px solid fade(@grey--dark, 50);
-  // appearance: textfield; // ругаеться валидатор
+  appearance: textfield; // ругаеться валидатор
+
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
@@ -220,6 +221,7 @@
 
   &::placeholder {
     color: @text-color;
+    line-height: normal;
   }
 
   &--invalid {
@@ -406,7 +408,11 @@
     }
 
     &--contact {
-      margin-right: 16px;
+      margin-right: 14px;
+    }
+
+    &--email {
+      margin-right: 21px;
     }
 
     &--radio::before {
@@ -450,7 +456,7 @@
     padding: 9px 10px 11px 18px;
 
     font-size: 20px;
-    line-height: 20px;
+    line-height: 30px;
   }
 
   .form__textaria {
@@ -511,7 +517,7 @@
 
   .form__line {
     &--email {
-      width: 563px;
+      width: 570px;
     }
 
     &--tel {
@@ -538,7 +544,11 @@
 
   .form__label {
     &--contact {
-      margin-right: 19px;
+      margin-right: 16px;
+    }
+
+    &--email {
+      margin-right: 22px;
     }
   }
 

@@ -5,9 +5,9 @@
   <meta charset="utf-8">
   <title>HTML Academy: Кэт энерджи</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="preload" href="fonts/oswaldregular.woff2" as="font">
-  <link rel="preload" href="fonts/oswaldmedium.woff2" as="font">
-  <link  rel="stylesheet" href="css/style.min.css">
+  <link rel="preload" href="fonts/oswaldregular.woff2" as="font" crossorigin="anonymous">
+  <link rel="preload" href="fonts/oswaldmedium.woff2" as="font" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.min.css">
   <link rel="apple-touch-icon" href="favicon/apple-touch-icon.png" sizes="180x180">
   <link rel="icon" href="favicon/favicon-32x32.png" type="image/png" sizes="32x32">
   <link rel="icon" href="favicon/favicon-16x16.png" type="image/png" sizes="16x16">
@@ -90,7 +90,7 @@
         <legend class="form__legend form__legend--contact">Контактные данные (владельца кота)</legend>
         <div class="form__wrapper">
           <p class="form__line form__line--email">
-            <label class="form__label form__label--contact" for="email">E-mail:*</label>
+            <label class="form__label form__label--contact form__label--email" for="email">E-mail:*</label>
             <input class="form__input form__input--email" id="email" type="email" name="email"
               placeholder="kuklachev@gmail.com">
             <svg class="form__icon form__icon--email" width="17" height="13">
@@ -204,6 +204,7 @@
     </div>
   </footer>
 
+  <script src="js/picturefill.min.js"></script>
   <script src="js/main-nav-toggle.js"></script>
   <script src="js/form.js"></script>
   <script src="js/google-map.js"></script>

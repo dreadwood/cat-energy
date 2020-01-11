@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <title>HTML Academy: Кэт энерджи</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="preload" href="fonts/oswaldregular.woff2" as="font">
-  <link rel="preload" href="fonts/oswaldmedium.woff2" as="font">
+  <link rel="preload" href="fonts/oswaldregular.woff2" as="font" crossorigin="anonymous">
+  <link rel="preload" href="fonts/oswaldmedium.woff2" as="font" crossorigin="anonymous">
   <link  rel="stylesheet" href="css/style.min.css">
   <link rel="apple-touch-icon" href="favicon/apple-touch-icon.png" sizes="180x180">
   <link rel="icon" href="favicon/favicon-32x32.png" type="image/png" sizes="32x32">
@@ -150,8 +150,12 @@
         </div>
         <div class="slider-image__control control">
           <button class="control__button control__button--before" type="button">Было</button>
-          <input class="control__range-mobile" type="range" min="1" max="2" value="1">
-          <input class="control__range-default" type="range" min="1" max="200">
+          <div class="control__mobile-track">
+            <div class="control__mobile-thumb"></div>
+          </div>
+          <div class="control__default-track">
+            <div class="control__default-thumb"></div>
+          </div>
           <button class="control__button control__button--after" type="button">Стало</button>
         </div>
       </div>
@@ -229,11 +233,12 @@
     </div>
   </footer>
 
+  <script src="js/picturefill.min.js"></script>
   <script src="js/main-nav-toggle.js"></script>
+  <script src="js/slider-image.js"></script>
   <script src="js/google-map.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMlU7FUOx6FTKhIt5Xhkh10bgGU73ZhaA&callback=initMap"
     async defer></script>
-
 </body>
 
 </html>

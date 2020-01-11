@@ -29,75 +29,65 @@
   }
 }
 
-.control__range-mobile {
-  appearance: none;
+.control__mobile-track {
+  position: relative;
   width: 84px;
-  margin: 0;
+  height: 12px;
   margin-right: 18px;
   margin-left: 18px;
-  background: transparent;
+  padding: 2px 6px;
 
-  &::-webkit-slider-thumb {
-    appearance: none;
-    width: 35px;
-    height: 6px;
-
-    background-color: @green;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-
-  &::-webkit-slider-runnable-track {
-    height: 14px;
-    padding: 3px 6px;
-
-    background-color: @white;
-    border: 1px solid @grey--dark;
-    border-radius: 6px;
-  }
+  background-color: @white;
+  border: 1px solid @grey--dark;
+  border-radius: 6px;
 }
 
-.control__range-default {
-  appearance: none;
+.control__mobile-thumb {
+  width: 35px;
+  height: 6px;
+
+  background-color: @green;
+  border-radius: 3px;
+}
+
+.control__default-track {
+  position: relative;
+
   display: none;
   width: 428px;
-  margin: 0;
+  height: 6px;
   margin-right: 19px;
   margin-left: 19px;
-  background: transparent;
+  background-color: @grey;
+  border-radius: 2.5px;
+}
 
-  &::-webkit-slider-thumb {
-    appearance: none;
-    width: 32px;
-    height: 32px;
-    margin-top: -13px;
+.control__default-thumb {
+  position: absolute;
+  top: -13px;
+  left: calc(50% - 16px);
 
-    background-color: @green;
-    border: 11px solid @white;
-    border-radius: 50%;
-    box-shadow:
-      0 0 0 1px @grey,
-      0 2px 5px 0 fade(@black, 15);
-    cursor: pointer;
-  }
+  width: 32px;
+  height: 32px;
 
-  &::-webkit-slider-thumb:hover {
+  background-color: @green;
+  border: 12px solid @white;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 1px @grey,
+    0 2px 5px 0 fade(@black, 15);
+  cursor: pointer;
+
+  &:hover {
     box-shadow:
       0 0 0 1px @grey,
       0 3px 5px 0 fade(@black, 25);
   }
 
-  &::-webkit-slider-thumb:active {
+  &:active {
     box-shadow:
       0 0 0 2px @green,
       0 4px 5px 0 fade(@black, 30);
-  }
-
-  &::-webkit-slider-runnable-track {
-    height: 6px;
-
-    background-color: @grey;
-    border-radius: 2.5px;
   }
 }
 
@@ -106,12 +96,11 @@
     padding-left: 0;
   }
 
-  .control__range-mobile {
+  .control__mobile-track {
     display: none;
-    padding: 0;
   }
 
-  .control__range-default {
+  .control__default-track {
     display: block;
   }
 
@@ -139,7 +128,7 @@
     justify-content: flex-end;
   }
 
-  .control__range-default {
+  .control__default-track {
     margin-left: 23px;
   }
 
