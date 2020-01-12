@@ -3,7 +3,7 @@ if (window.innerWidth < 768) {
   var buttonAfter = document.querySelector('.control__button--after');
   var imageBefore = document.querySelector('.slider-image__item--before');
   var imageAfter = document.querySelector('.slider-image__item--after');
-  var control = document.querySelector('.control__mobile-track');
+  var control = document.querySelector('.control__bar');
 
   buttonBefore.addEventListener('click', function () {
     imageAfter.style.display = 'none';
