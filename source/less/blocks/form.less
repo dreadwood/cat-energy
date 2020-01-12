@@ -301,7 +301,10 @@
 
 @media (min-width: @tablet-width) {
   .form {
-    .wrapper();
+    // .wrapper();
+    margin: 0 auto;
+    width: @tablet-width - @tablet-indent * 2;
+
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -489,6 +492,9 @@
 @media (min-width: @desktop-width) {
   .form {
     padding: 66px 0 82px 0;
+
+    width: @desktop-width - @desktop-indent * 2;
+    margin: 0 auto;
   }
 
   .form__fieldset {

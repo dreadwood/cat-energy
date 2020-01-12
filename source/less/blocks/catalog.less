@@ -34,7 +34,9 @@
 
 @media (min-width: @tablet-width) {
   .catalog {
-    .wrapper();
+    // .wrapper();
+    margin: 0 auto;
+    width: @tablet-width - @tablet-indent * 2;
   }
 
   .catalog__list {
@@ -61,6 +63,11 @@
 }
 
 @media (min-width: @desktop-width) {
+  .catalog {
+    margin: 0 auto;
+    width: @desktop-width - @desktop-indent * 2;
+  }
+
   .catalog__list-item {
     margin-bottom: 62px;
   }
