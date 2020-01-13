@@ -17,7 +17,6 @@ var map;
       var image = {
         url: 'img/map-pin.png',
         size: new google.maps.Size(124, 106)
-        // изменение размера маркера
         // ,
         // origin: new google.maps.Point(0, 0),
         // anchor: new google.maps.Point(17, 34),

@@ -211,7 +211,7 @@
   text-transform: uppercase;
 
   border: 1px solid fade(@grey--dark, 50);
-  appearance: textfield; // ругаеться валидатор
+  appearance: textfield;
 
 
   &::-webkit-outer-spin-button,
@@ -301,13 +301,11 @@
 
 @media (min-width: @tablet-width) {
   .form {
-    // .wrapper();
-    margin: 0 auto;
-    width: @tablet-width - @tablet-indent * 2;
-
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    width: @tablet-width - @tablet-indent * 2;
+    margin: 0 auto;
     padding: 66px 37px 72px 40px;
   }
 
