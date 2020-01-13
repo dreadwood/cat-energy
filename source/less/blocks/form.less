@@ -250,8 +250,16 @@
     background-color: @green;
   }
 
+  &:focus ~ .form__label--radio {
+    box-shadow: 0 0 3px 2px @focus;
+  }
+
   &:checked ~ .form__label--checkbox::before {
     background-image: url("../img/icon-tick.svg");
+  }
+
+  &:focus ~ .form__label--checkbox {
+    box-shadow: 0 0 3px 2px @focus;
   }
 }
 
