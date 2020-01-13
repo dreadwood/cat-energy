@@ -10,11 +10,13 @@ var csso = require("gulp-csso");
 var server = require("browser-sync").create();
 var del = require("del"); // модуль для удаления
 var rename = require("gulp-rename"); // модуль для переименования
-var svgstore = require("gulp-svgstore"); // модель для создания векторного спрайта
-var imagemin = require("gulp-imagemin"); // Модуль для оптимизации изображений
-var webp = require("gulp-webp"); // Модуль для создания WebP
-var posthtml = require("gulp-posthtml"); // Модуль обработки html
-var include = require("posthtml-include"); // Модель вставки в html
+var svgstore = require("gulp-svgstore"); // модуль для создания векторного спрайта
+var imagemin = require("gulp-imagemin"); // модуль для оптимизации изображений
+var webp = require("gulp-webp"); // модуль для создания WebP
+var posthtml = require("gulp-posthtml"); // модуль обработки html
+var include = require("posthtml-include"); // модуль вставки в html
+var htmlmin = require('gulp-htmlmin'); // модуль минифицирует html
+var uglify = require('gulp-uglify'); // модуль минифицирует js
 
 
 // Удаление файлов из build
@@ -26,9 +28,7 @@ gulp.task("clean", function () {
 gulp.task("copy", function () {
   return gulp.src([
       "source/fonts/**/*.{woff,woff2}",
-      "source/img/**",
-      "source/js/**",
-      "source/*.ico"
+      "source/favicon/*"
     ], {
       base: "source"
     })
@@ -43,16 +43,34 @@ gulp.task("css", function () {
     .pipe(postcss([
       autoprefixer()
     ]))
-    .pipe(csso()) // минифицирует CSS scco
+    .pipe(csso()) // минифицирует CSS
     .pipe(rename("style.min.css")) // переименовываем в min.файл
     .pipe(sourcemap.write("."))
-    .pipe(gulp.dest("build/css")) // Записываем в директорию
-    .pipe(server.stream()); // неизвестная команда
+    .pipe(gulp.dest("build/css"))
+    .pipe(server.stream());
+});
+
+// Оптимизация изображений
+gulp.task("images", function () {
+  return gulp.src("source/img/**/*.{png,jpg,svg}")
+    .pipe(imagemin([
+      imagemin.optipng({optimizationLevel: 3}),
+      imagemin.jpegtran({progressive: true}),
+      imagemin.svgo({plugins: [{removeViewBox: false}]})
+    ]))
+    .pipe(gulp.dest("build/img"));
+});
+
+// Создаем WebP изображения
+gulp.task("webp", function () {
+  return gulp.src("build/img/**/*.{png,jpg}")
+    .pipe(webp({quality: 90}))
+    .pipe(gulp.dest("build/img"));
 });
 
 // Создаем SVG спрайт
 gulp.task("sprite", function () {
-  return gulp.src("source/img/sprite-*.svg") // Выбрать определенные svg
+  return gulp.src("build/img/sprite-*.svg") // выбрать определенные svg
     .pipe(svgstore({
       inlineSvg: true
     }))
@@ -60,31 +78,21 @@ gulp.task("sprite", function () {
     .pipe(gulp.dest("build/img"));
 });
 
-// Вставка спрайта в html
+// Минифицирует JS
+gulp.task('js', function () {
+  return gulp.src("source/js/*.js")
+    .pipe(uglify())
+    .pipe(gulp.dest("build/js"))
+});
+
+// Созданание HTML
 gulp.task("html", function () {
   return gulp.src("source/*.html")
     .pipe(posthtml([
       include()
-    ]))
+    ])) // вставка спрайта
+    .pipe(htmlmin({ collapseWhitespace: true })) // минифицирует html
     .pipe(gulp.dest("build"));
-});
-
-// Оптимизация изображений - npx gulp images
-gulp.task("images", function () {
-  return gulp.src("build/img/**/*.{png,jpg,svg}")
-    .pipe(imagemin([
-      imagemin.optipng({optimizationLevel: 3}),
-      imagemin.jpegtran({progressive: true}),
-      imagemin.svgo()
-]))
-    .pipe(gulp.dest("build/img"));
-});
-
-// Создаем WebP изображения - команда npx gulp webp
-gulp.task("webp", function () {
-  return gulp.src("source/img/**/*.{png,jpg}")
-    .pipe(webp({quality: 90}))
-    .pipe(gulp.dest("build/img"));
 });
 
 // Запускаем билд
@@ -92,10 +100,11 @@ gulp.task("build", gulp.series(
   "clean",
   "copy",
   "css",
-  "sprite",
-  "html",
   "images",
-  "webp"
+  "webp",
+  "sprite",
+  "js",
+  "html"
 ));
 
 gulp.task("server", function () {

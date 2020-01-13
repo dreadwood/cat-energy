@@ -7,7 +7,7 @@
   font-weight: 400;
   font-style: normal;
   text-align: left;
-  color: @black--lighten;
+  color: @text-color;
 }
 
 .form__fieldset {
@@ -129,7 +129,7 @@
 
     background-color: @white;
     border: 8px solid @white;
-    box-shadow: 0 0 0 1px @grey;
+    box-shadow: 0 0 0 1px @grey--dark;
     border-radius: 50%;
   }
 
@@ -154,12 +154,12 @@
     background-size: 22px 17px;
     background-position: 4px 5px;
     background-repeat: no-repeat;
-    border: 1px solid @grey;
+    border: 1px solid @grey--dark;
   }
 
   &--radio:hover::before,
   &--radio:focus::before {
-    box-shadow: 0 0 0 1px @grey--dark;
+    box-shadow: 0 0 0 1px @grey--darken;
   }
 
   &--radio:active {
@@ -167,12 +167,12 @@
   }
 
   &--radio:active::before {
-    box-shadow: 0 0 0 1px @grey--dark;
+    box-shadow: 0 0 0 1px @grey--darken;
   }
 
   &--checkbox:hover::before,
   &--checkbox:focus::before {
-    border-color: @grey--dark;
+    border-color: @grey--darken;
   }
 
   &--checkbox:active {
@@ -180,7 +180,7 @@
   }
 
   &--checkbox:active::before {
-    border-color: @grey--dark;
+    border-color: @grey--darken;
   }
 }
 
@@ -207,29 +207,39 @@
   font-family: @font-deafult;
   font-size: 16px;
   line-height: 18px;
-  color: @input-placeholder-color;
+  color: @text-color;
   text-transform: uppercase;
 
-  border: 1px solid @input-border-color;
+  border: 1px solid fade(@grey--dark, 50);
+  appearance: textfield; // ругаеться валидатор
+
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+  }
 
   &::placeholder {
-    color: @input-placeholder-color;
+    color: @text-color;
+    line-height: normal;
   }
 
   &--invalid {
-    border-color: @input-border-color--err;
+    border-color: @pink;
+    box-shadow: 0 0 0 1px @pink;
   }
 
   &--invalid ~ .form__icon {
-    fill: @input-border-color--err;
+    fill: @pink;
   }
 
   &:hover {
-    border-color: @input-border-color--hvr;
+    border-color: @grey--dark;
   }
 
   &:focus {
-    border-color: @input-border-color--active;
+    border-color: @black--lightest;
+    box-shadow: 0 0 0 1px @black--lightest;
   }
 
   &:focus ~ .form__icon {
@@ -256,19 +266,19 @@
   color: @text-color;
   text-transform: uppercase;
 
-  border: 1px solid @input-border-color;
+  border: 1px solid fade(@grey--dark, 50);
   resize: none;
 
   &::placeholder {
-    color: @input-placeholder-color;
+    color: @text-color;
   }
 
   &:hover {
-    border-color: @input-border-color--hvr;
+    border-color: @grey--dark;
   }
 
   &:focus {
-    border-color: @input-border-color--active;
+    border-color: @black--lightest;
   }
 }
 
@@ -291,7 +301,10 @@
 
 @media (min-width: @tablet-width) {
   .form {
-    .wrapper();
+    // .wrapper();
+    margin: 0 auto;
+    width: @tablet-width - @tablet-indent * 2;
+
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -309,6 +322,8 @@
     &--program {
       margin-bottom: 75px;
       padding: 33px 0 34px 20px;
+
+      border-color: fade(@grey--dark, 50);
     }
 
     &--contact {
@@ -378,6 +393,10 @@
     &--extra {
       width: 287px;
       margin-bottom: 51px;
+
+      &:last-child {
+        margin-bottom: 51px;
+      }
     }
   }
 
@@ -394,7 +413,11 @@
     }
 
     &--contact {
-      margin-right: 16px;
+      margin-right: 14px;
+    }
+
+    &--email {
+      margin-right: 21px;
     }
 
     &--radio::before {
@@ -405,7 +428,6 @@
       height: 38px;
 
       border: 10px solid @white;
-      box-shadow: 0 0 0 1px @grey;
     }
 
     &--checkbox {
@@ -439,7 +461,7 @@
     padding: 9px 10px 11px 18px;
 
     font-size: 20px;
-    line-height: 20px;
+    line-height: 30px;
   }
 
   .form__textaria {
@@ -470,6 +492,9 @@
 @media (min-width: @desktop-width) {
   .form {
     padding: 66px 0 82px 0;
+
+    width: @desktop-width - @desktop-indent * 2;
+    margin: 0 auto;
   }
 
   .form__fieldset {
@@ -500,7 +525,7 @@
 
   .form__line {
     &--email {
-      width: 563px;
+      width: 570px;
     }
 
     &--tel {
@@ -510,20 +535,28 @@
 
   .form__list {
     &--extra {
-      display: flex;
-      justify-content: space-between;
+      justify-content: start;
     }
   }
 
   .form__list-item {
     &--extra {
       width: 245px;
+      margin-right: 80px;
+
+      &:nth-child(4n) {
+        margin-right: 0;
+      }
     }
   }
 
   .form__label {
     &--contact {
-      margin-right: 19px;
+      margin-right: 16px;
+    }
+
+    &--email {
+      margin-right: 22px;
     }
   }
 

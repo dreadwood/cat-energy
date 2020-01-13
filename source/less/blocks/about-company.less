@@ -12,12 +12,14 @@
 
 @media (min-width: @desktop-width) {
   .about-company__contact {
-    .wrapper();
     position: absolute;
     top: 95px;
     right: 0;
     left: 0;
     z-index: 3;
+
+    width: @desktop-width - @desktop-indent * 2;
+    margin: 0 auto;
 
     background-color: transparent;
   }

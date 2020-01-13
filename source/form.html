@@ -3,9 +3,16 @@
 
 <head>
   <meta charset="utf-8">
-  <title>HTML Academy: Кэт энерджи - Подбор программы</title>
+  <title>HTML Academy: Кэт энерджи</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link href="css/style.min.css" rel="stylesheet">
+  <link rel="preload" href="fonts/oswaldregular.woff2" as="font" crossorigin="anonymous">
+  <link rel="preload" href="fonts/oswaldmedium.woff2" as="font" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.min.css">
+  <link rel="apple-touch-icon" href="favicon/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" href="favicon/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="favicon/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="manifest" href="favicon/site.webmanifest">
+  <meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
@@ -14,7 +21,7 @@
   </div>
 
   <header class="page-header">
-    <a class="page-header__logo" href="index.html">
+    <a class="page-header__logo" href="index.html" aria-label="Главная страница Кэт энерджи">
       <picture>
         <source media="(min-width:1300px)" srcset="img/logo-desktop.svg">
         <source media="(min-width:768px)" srcset="img/logo-tablet.svg">
@@ -83,7 +90,7 @@
         <legend class="form__legend form__legend--contact">Контактные данные (владельца кота)</legend>
         <div class="form__wrapper">
           <p class="form__line form__line--email">
-            <label class="form__label form__label--contact" for="email">E-mail:*</label>
+            <label class="form__label form__label--contact form__label--email" for="email">E-mail:*</label>
             <input class="form__input form__input--email" id="email" type="email" name="email"
               placeholder="kuklachev@gmail.com">
             <svg class="form__icon form__icon--email" width="17" height="13">
@@ -156,7 +163,7 @@
       </div>
     </section>
     <div class="page-footer__wrapper">
-      <a class="page-footer__logo" href="index.html">
+      <a class="page-footer__logo" href="index.html" aria-label="Главная страница Кэт энерджи">
         <img class="page-footer__logo-img" src="img/logo-footer.svg" width="128" height="24"
           alt="Логотип магазин Cat Energy">
       </a>
@@ -188,7 +195,7 @@
           </li>
         </ul>
       </div>
-      <a class="page-footer__copyright copyright" href="https://htmlacademy.ru/intensive/adaptive" aria-label="Сайт HTML Academy">
+      <a class="page-footer__copyright copyright" href="https://htmlacademy.ru/intensive/adaptive" aria-label="Сайт HTML Academy">
         <p class="copyright__text">HTML Academy</p>
         <svg class="copyright__icon" width="27" height="34">
           <use xlink:href="#sprite-icon-htmlacademy"></use>
@@ -197,6 +204,7 @@
     </div>
   </footer>
 
+  <script src="js/picturefill.min.js"></script>
   <script src="js/main-nav-toggle.js"></script>
   <script src="js/form.js"></script>
   <script src="js/google-map.js"></script>

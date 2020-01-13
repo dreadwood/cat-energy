@@ -3,7 +3,7 @@
 }
 
 .slider-image__list {
-  margin-bottom: 27px;
+  margin-bottom: 28px;
 }
 
 .slider-image__item--after {
@@ -14,7 +14,7 @@
   .slider-image__list {
     display: flex;
     width: 690px;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
     margin-left: 46px;
   }
 
@@ -26,13 +26,13 @@
     }
 
     &--after {
-      width: 352px;
       display: block;
+      width: 352px;
     }
   }
 
   .slider-image__item--after .slider-image__img {
-    margin-left: -100%;
+    margin-left: -96%;
   }
 
   .slider-image__img {
@@ -45,11 +45,17 @@
 
 @media (min-width: @desktop-width) {
   .slider-image__list {
+    width: inherit;
     margin: 0;
-    margin-bottom: 38px;
+    margin-bottom: 35px;
   }
 
-  // Временно для ПиксельПерфекта
+  .slider-image__item {
+    &--after {
+      width: 354px;
+    }
+  }
+
   .slider-image {
     padding: 0 0 68px 0;
 
@@ -60,11 +66,11 @@
 
   .slider-image__item {
     &--before {
-      width: 396px;
+      width: 454px;
     }
   }
 
   .slider-image__item--after .slider-image__img {
-    margin-left: -112%;
+    margin-left: -128%;
   }
 }
