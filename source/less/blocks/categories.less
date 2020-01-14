@@ -159,6 +159,7 @@
   .categories__list {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
 
   .categories__item {
@@ -174,6 +175,10 @@
     &--pro {
       background-position: 34px 47px;
       background-size: auto 100px;
+    }
+
+    &:nth-child(n+3) {
+      margin-top: 20px;
     }
   }
 
