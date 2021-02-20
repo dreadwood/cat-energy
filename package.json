@@ -22,6 +22,7 @@
     "gulp-uglify": "^3.0.2",
     "gulp-webp": "^4.0.1",
     "posthtml-include": "^1.3.2",
+    "push-dir": "^0.4.1",
     "stylelint": "^13.11.0",
     "stylelint-config-htmlacademy": "0.1.x"
   },
@@ -30,7 +31,8 @@
     "stylelint": "stylelint \"source/less/**/*.less\" --syntax less",
     "test": "npm run editorconfig && npm run stylelint",
     "build": "gulp build",
-    "start": "gulp start"
+    "start": "gulp start",
+    "gh-pages": "push-dir --dir=build --branch=gh-pages"
   },
   "browserslist": [
     "last 2 versions",
